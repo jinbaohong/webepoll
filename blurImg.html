@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>	
+	<script src="http://d3js.org/topojson.v1.min.js"></script>
+	<style type="text/css">
+		body {
+			margin: 20px;
+		}
+		img {
+			margin: 20px;
+		}
+	</style>	
+<script>
+	function init() {
+		var images = document.getElementsByTagName('img');
+		console.log(images);
+		for (var i = 0; i < images.length; i++) {
+			images[i].onmouseover = showAnswer;
+		}
+	}
+
+	function showAnswer(eventObj) {
+		var image = eventObj.target;
+		console.log(image);
+		var name = image.id;
+		name = "img/" + name + ".jpg";
+		image.src = name;
+
+		image.onmouseout = reblur;
+	//	setTimeout(reblur, 2000, image);
+	}
+
+	function reblur(eventObj) {
+		var image = eventObj.target;
+		var name = "img/" + image.id + "blur.jpg";
+		image.src = name;
+	}
+	window.onload = init;
+</script>
+</head>
+<body>
+<img id="zero" src="img/zeroblur.jpg">
+<img id="one" src="img/oneblur.jpg">
+<img id="two" src="img/twoblur.jpg">
+<img id="three" src="img/threeblur.jpg">
+<img id="four" src="img/fourblur.jpg">
+<img id="five" src="img/fiveblur.jpg">
+</body>
